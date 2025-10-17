@@ -9,10 +9,10 @@ public:
     static ModuleManager& Get();
 
     void LoadModulesFromDirectory(const std::string& dirPath);
-    void StartupAll();  // с учЄтом зависимостей!
+    void StartupAll();  
     void ShutdownAll();
 
-    // ѕолучить модуль по имени (безопасно)
+    
     template<typename T>
     T* GetModule(const char* name) const
     {
@@ -22,8 +22,7 @@ public:
     }
 
 private:
-    void TopologicalStartup();  // запуск в пор€дке зависимостей
-
+    void TopologicalStartup();  
     struct LoadedModule
     {
         std::unique_ptr<class DynamicLibrary> library;

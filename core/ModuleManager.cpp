@@ -44,7 +44,7 @@ void ModuleManager::LoadModulesFromDirectory(const std::string& dirPath)
     }
 }
 
-// Простая топологическая сортировка по зависимостям
+
 void ModuleManager::TopologicalStartup()
 {
     std::unordered_map<std::string, int> inDegree;
@@ -75,7 +75,6 @@ void ModuleManager::TopologicalStartup()
         }
     }
 
-    // Kahn's algorithm
     std::queue<std::string> q;
     for (auto& [name, deg] : inDegree)
     {
@@ -94,7 +93,6 @@ void ModuleManager::TopologicalStartup()
         }
     }
 
-    // Проверка циклов
     for (auto& [name, deg] : inDegree)
     {
         if (deg > 0)
